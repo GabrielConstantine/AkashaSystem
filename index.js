@@ -1,17 +1,57 @@
 const prompt = require('prompt-sync')();
 
-console.log("Hello Hero, Seja bem vindo ao Akasha Systema!!");
+const nome = prompt("Informe o seu nome Héroi: ");
+console.log("Olá " + nome + ", Seja bem-vindo ao Akasha System!!");
+
+let rankeadasVencidas = parseInt(prompt(nome + " quantas partidas ranqueadas foram vencidas?"));
+let rankeadasPerdidas = parseInt(prompt(nome + " quantas partidas ranqueadas foram perdidas?"));
+let xpRankeadas = rankeadasVencidas - rankeadasPerdidas;
+let rankeadasTotais = rankeadasVencidas + rankeadasPerdidas;
+let xp = xpRankeadas * 120
+
+function matchRanking(xpRankeadas) {
+    let matchRanking;
+
+    switch (true) {
+        case xpRankeadas < 10:
+            matchRanking = "Ferro";
+            break;
+        case xpRankeadas > 10 && xpRankeadas <= 20:
+            matchRanking = "Bronze";
+            break;
+        case xpRankeadas > 20 && xpRankeadas <= 50:
+            matchRanking = "Prata";
+            break;
+        case xpRankeadas > 50 && xpRankeadas <= 70:
+            matchRanking = "Ouro";
+            break;
+        case xpRankeadas > 70 && xpRankeadas <= 80:
+            matchRanking = "Platina";
+            break;
+        case xpRankeadas > 80 && xpRankeadas <= 90:
+            matchRanking = "Diamante";
+            break;
+        case xpRankeadas > 90 && xpRankeadas <= 100:
+            matchRanking = "Lendário";
+            break;
+        case xpRankeadas > 100:
+            matchRanking = "Imortal";
+            break;
+        default:
+            matchRanking = "Ferro";
+            break;
+    }
+    return matchRanking;
+}
 
 function rankingHero() {
-    const nome = prompt("Informe o seu nome Héroi: ");
-    const xp = parseInt(prompt("Digite a quantidade de XP que você tem Héroi: "));
     let ranking;
 
     switch (true) {
         case xp <= 1000:
             ranking = "Ferro";
             break;
-        case xp > 1000 & xp <= 2000:
+        case xp > 1000 && xp <= 2000:
             ranking = "Bronze";
             break;
         case xp > 2000 && xp <= 5000:
@@ -26,10 +66,10 @@ function rankingHero() {
         case xp > 7000 && xp <= 8000:
             ranking = "Diamante";
             break;
-        case xp > 8000 && xp > 9000:
+        case xp > 8000 && xp <= 9000:
             ranking = "Ascendente";
             break;
-        case xp > 9000 &&  xp <= 1000:
+        case xp > 9000 && xp <= 10000:
             ranking = "Imortal";
             break;
         case xp > 10000:
@@ -39,8 +79,13 @@ function rankingHero() {
             ranking = "Ferro";
             break;
     }
-
-    console.log(`O herói ${nome} está no ranking ${ranking}`);
+    return ranking;
 }
 
-rankingHero();
+console.log(`Ficha Técnica do Herói:
+    Nome: ${nome}.
+    Ranking de Herói: ${rankingHero(xpRankeadas)}.
+    Ranqueadas vencidas: ${rankeadasVencidas} vitórias.
+    Ranqueadas perdidas: ${rankeadasPerdidas} derrotas.
+    Ranqueadas totais jogadas: ${rankeadasTotais} jogadas.
+    Ranking de Partida:  ${matchRanking(xpRankeadas)}.`);

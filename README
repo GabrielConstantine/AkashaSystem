@@ -1,18 +1,37 @@
-🔰 Desafio Classificador de nível de Héroi 🔰
+🔰 Desafio do Akasha System 🔰
 
-📜 Objetivo:
+Criar um sistema para heróis que registre seu nome, assim como o saldo de vitórias e derrotas em partidas ranqueadas.
+A partir desses dados, calcular o xpRankeada (ranqueadasVencidas - ranqueadasPerdidas) e os pontos de experiência (XP).
+O programa empregará estruturas de decisão para analisar o desempenho nas partidas ranqueadas e o seu ranking de héroi,
+assim como apresentar mensagens resultantes da sua analise.
 
-Desenvolver um sistema para armazenar o nome e os pontos de experiência (XP) de um herói, que,
-por meio de uma estrutura de decisão, exiba uma mensagem correspondente ao ranking atual do herói.
+------------------------------------------------------------------------------------------------------------------------
+
+🔰 Ranking's de Partida:
+
+⛓️ Ferro: xpRankeadas < 10
+⚖️ Bronze: xpRankeadas > 10 & xpRankeadas <= 20
+⚔️ Prata: xpRankeadas > 20 && xpRankeadas <= 50
+🔱 Ouro: xpRankeadas > 50 && xpRankeadas <= 70
+💿 Platina: xpRankeadas > 70 && xpRankeadas <= 80
+💎 Diamante: xpRankeadas > 80 && xpRankeadas > 90
+🐉 Lendário: xpRankeadas > 90 &&  xpRankeadas <= 100
+☀️ Imortal:xpRankeadas > 100
+
+------------------------------------------------------------------------------------------------------------------------
 
 ⚜️ Ranking's de Héroi:
 
-⛓️ Ferro: XP < 1.000
-⚖️ Bronze: 1.001 <= XP <= 2.000
-⚔️ Prata: 2.001 <= XP <= 5.000
-🔱 Ouro: 5.001 <= XP <= 6.000
-💿 Platina: 6.001 <= XP <= 7.000
-💎 Diamante: 7.001 <= XP <= 8.000
-💫 Ascendente: 8.001 <= XP <= 9.000
-🐉 Imortal: 9.001 <= XP <= 10.000
-☀️ Radiante: XP >= 10.001
+⛓️ Ferro: xp <= 1000
+⚖️ Bronze: xp > 1000 & xp <= 2000
+⚔️ Prata: xp > 2000 && xp <= 5000
+🔱 Ouro: xp > 5000 && xp <= 6000
+💿 Platina: xp > 6000 && xp <= 7000
+💎 Diamante: xp > 7000 && xp <= 8000
+💫 Ascendente: xp > 8000 && xp > 9000
+🐉 Imortal: xp > 9000 &&  xp <= 1000
+☀️ Radiante: xp > 10000
+
+------------------------------------------------------------------------------------------------------------------------
+
+# O Akasha System é o resultado da junção de dois desafios distintos, um que calcula xp e o outro que calcula o ranking de partidas.
