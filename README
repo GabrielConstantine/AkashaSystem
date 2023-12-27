@@ -1,9 +1,55 @@
 🔰 Desafio do Akasha System 🔰
 
-Criar um sistema para heróis que registre seu nome, assim como o saldo de vitórias e derrotas em partidas ranqueadas.
-A partir desses dados, calcular o xpRankeada (ranqueadasVencidas - ranqueadasPerdidas) e os pontos de experiência (XP).
+Criar um sistema que permita a criação de ficha de um personagem que será héroi, contendo nome, idade, classe, ranking,
+ranqueadasVencidas, ranqueadasPerdidas, ranqueadasTotais. A partir desses dados conectar com um JSON que possui uma lista
+de habilidades com base em classe, sendo elas: Mago, Assassino, Guerreiro e Tank. Com base neles, o sistema permitirá ao
+héroi jogar uma rankeada, cuja habilidade usada é escolhida aleatoriamente e com base nela, o héroi terá uma chance de vencer.
+A partir desses dados, calcular o xpRankeada (ranqueadasVencidas - (ranqueadasPerdidas/2)) e os pontos de experiência (XP).
 O programa empregará estruturas de decisão para analisar o desempenho nas partidas ranqueadas e o seu ranking de héroi,
-assim como apresentar mensagens resultantes da sua analise.
+assim como apresentar mensagens resultantes da sua analise. Além disso, o sistema informa qual a classe e ataque usado
+pelo héroi para vencer, e agora o sistema está dentro de um do-while, diferente das versões 0.1 e 1.0.
+
+------------------------------------------------------------------------------------------------------------------------
+
+🧙🏾‍♂️ Clases do Héroi:
+
+🧙🏼‍♂️ Mago: Árvore de Habilidades {
+    Ataque: Fireball (Chance de vitória: 0.4%).
+    Ataque: Mísseis Mágicos (Chance de vitória: 0.5%).
+    Ataque: Mísseis Mágicos Téleguiados (Chance de vitória: 0.65).
+    Ataque: Explosion!! (Chance de vitória: 0.8%).
+}
+
+🥷🏻 Assassino: Árvore de Habilidades {
+    Ataque: Ataque Furtivo (Chance de vitória: 0.9%).
+    Ataque: Esquiva Mortal (Chance de vitória: 0.6%).
+    Ataque: Corte entre sombras (Chance de vitória:0.7%).
+    Ataque: Invisibiilidade (Chance de vitória: 0.85%).
+    
+}
+
+🧙🏻‍♀️ Bruxo: Árvore de Habilidades {
+    Ataque: Maldição Sombria (Chance de vitória: 0.7%).
+    Ataque: Invocação Infernal (Chance de vitória: 0.6%).
+    Ataque: Rajada de Veneno (Chance de vitória: 0.65%).
+    Ataque: Tempestade de Chamas Negras (Chance de vitória: 0.8%).
+    
+}
+
+🛡️ Tank: Árvore de Habilidades {
+    Ataque: Bloqueio Defensivo (Chance de vitória: 0.6%).
+    Ataque: Investida Imponente (Chance de vitória: 0.7%).
+    Ataque: Blayblade (Chance de vitória: 0.5%).
+    Ataque: Rompe-defesa (Chance de vitória: 0.7%).
+}
+
+⚔️ Guerreiro: Árvore de Habilidades {
+    Ataque: Ataque Poderoso (Chance de vitória: 0.6%).
+    Ataque: Defesa Hábil (Chance de vitória: 0.5%).
+    Ataque: Ataque em área (Chance de vitória: 0.7%).
+    Ataque: Ataque duplo (Chance de vitória: 0.65%).
+    
+}
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -33,5 +79,3 @@ assim como apresentar mensagens resultantes da sua analise.
 ☀️ Radiante: xp > 10000
 
 ------------------------------------------------------------------------------------------------------------------------
-
-# O Akasha System é o resultado da junção de dois desafios distintos, um que calcula xp e o outro que calcula o ranking de partidas.

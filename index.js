@@ -1,91 +1,130 @@
 const prompt = require('prompt-sync')();
+const fs = require('fs');
 
-const nome = prompt("Informe o seu nome Héroi: ");
-console.log("Olá " + nome + ", Seja bem-vindo ao Akasha System!!");
+console.log("Seja bem-vindo ao Akasha System!!");
 
-let rankeadasVencidas = parseInt(prompt(nome + " quantas partidas ranqueadas foram vencidas?"));
-let rankeadasPerdidas = parseInt(prompt(nome + " quantas partidas ranqueadas foram perdidas?"));
-let xpRankeadas = rankeadasVencidas - rankeadasPerdidas;
-let rankeadasTotais = rankeadasVencidas + rankeadasPerdidas;
-let xp = xpRankeadas * 120
+class FichaPersonagem {
+    constructor(nome, idade, classe, ranking, rankeadasVencidas, rankeadasPerdidas, rankeadasTotais) {
+        this.nome = nome;
+        this.idade = idade;
+        this.classe = classe;
+        this.ranking = ranking || 'Ferro';
+        this.rankeadasVencidas = rankeadasVencidas || 0;
+        this.rankeadasPerdidas = rankeadasPerdidas || 0;
+        this.rankeadasTotais = rankeadasTotais || 0;
+    }
+}
 
-function matchRanking(xpRankeadas) {
-    let matchRanking;
+function criarPersonagem() {
+    const nome = prompt("Informe o seu nome Herói: ");
+    const idade = parseInt(prompt("Informe a idade do Herói: "));
+    const classe = prompt("Informe a classe do Herói: ");
 
-    switch (true) {
-        case xpRankeadas < 10:
+    return new FichaPersonagem(nome, idade, classe);
+}
+
+const personagem = criarPersonagem();
+let jogarRankeada;
+
+function usarHabilidade() {
+    try {
+        const habilidadesJSON = fs.readFileSync('classes.json', 'utf-8');
+        const habilidades = JSON.parse(habilidadesJSON).habilidades;
+
+        return habilidades || {};  // Garantindo que habilidades é um objeto ou um objeto vazio
+    } catch (error) {
+        console.error('Erro ao carregar habilidades:', error.message);
+        return {};  // Em caso de erro, retornar um objeto vazio
+    }
+}
+
+do {
+    function atacar(personagem) {
+        const habilidadesPorClasse = usarHabilidade()[personagem.classe] || [];
+    
+        if (habilidadesPorClasse.length === 0) {
+            console.error(`A classe '${personagem.classe}' não possui habilidades definidas.`);
+            return;
+        }
+    
+        const indice = Math.floor(Math.random() * habilidadesPorClasse.length);
+        const habilidadeEscolhida = habilidadesPorClasse[indice];
+    
+        console.log(`O ${personagem.nome} da classe ${personagem.classe} atacou usando ${habilidadeEscolhida.nomeAtaque}`);
+    
+        const resultado = Math.random() < habilidadeEscolhida.chance;
+    
+        if (resultado) {
+            console.log(`${personagem.nome} teve sucesso na ranqueada!`);
+            personagem.rankeadasVencidas++;
+        } else {
+            console.log(`${personagem.nome} falhou na ranqueada.`);
+            personagem.rankeadasPerdidas++;
+        }
+    
+        personagem.rankeadasTotais++;
+    }
+
+    atacar(personagem);
+
+    jogarRankeada = prompt("Deseja jogar outra ranqueada? (s/n)").toLowerCase() === 's';
+
+    if (!jogarRankeada) {
+        let xpRankeadas = personagem.rankeadasVencidas - (personagem.rankeadasPerdidas/2);
+        let rankeadasTotais = personagem.rankeadasVencidas + personagem.rankeadasPerdidas;
+        let xp = xpRankeadas * 200;
+
+        // Determinando o ranking da ranqueada diretamente
+        let matchRanking;
+        if (xpRankeadas < 10) {
             matchRanking = "Ferro";
-            break;
-        case xpRankeadas > 10 && xpRankeadas <= 20:
+        } else if (xpRankeadas > 10 && xpRankeadas <= 20) {
             matchRanking = "Bronze";
-            break;
-        case xpRankeadas > 20 && xpRankeadas <= 50:
+        } else if (xpRankeadas > 20 && xpRankeadas <= 50) {
             matchRanking = "Prata";
-            break;
-        case xpRankeadas > 50 && xpRankeadas <= 70:
+        } else if (xpRankeadas > 50 && xpRankeadas <= 70) {
             matchRanking = "Ouro";
-            break;
-        case xpRankeadas > 70 && xpRankeadas <= 80:
+        } else if (xpRankeadas > 70 && xpRankeadas <= 80) {
             matchRanking = "Platina";
-            break;
-        case xpRankeadas > 80 && xpRankeadas <= 90:
+        } else if (xpRankeadas > 80 && xpRankeadas <= 90) {
             matchRanking = "Diamante";
-            break;
-        case xpRankeadas > 90 && xpRankeadas <= 100:
+        } else if (xpRankeadas > 90 && xpRankeadas <= 100) {
             matchRanking = "Lendário";
-            break;
-        case xpRankeadas > 100:
+        } else if (xpRankeadas > 100) {
             matchRanking = "Imortal";
-            break;
-        default:
-            matchRanking = "Ferro";
-            break;
-    }
-    return matchRanking;
-}
+        }
 
-function rankingHero() {
-    let ranking;
-
-    switch (true) {
-        case xp <= 1000:
+        // Determinando o ranking do herói diretamente
+        let ranking;
+        if (xp <= 1000) {
             ranking = "Ferro";
-            break;
-        case xp > 1000 && xp <= 2000:
+        } else if (xp > 1000 && xp <= 2000) {
             ranking = "Bronze";
-            break;
-        case xp > 2000 && xp <= 5000:
+        } else if (xp > 2000 && xp <= 5000) {
             ranking = "Prata";
-            break;
-        case xp > 5000 && xp <= 6000:
+        } else if (xp > 5000 && xp <= 6000) {
             ranking = "Ouro";
-            break;
-        case xp > 6000 && xp <= 7000:
+        } else if (xp > 6000 && xp <= 7000) {
             ranking = "Platina";
-            break;
-        case xp > 7000 && xp <= 8000:
+        } else if (xp > 7000 && xp <= 8000) {
             ranking = "Diamante";
-            break;
-        case xp > 8000 && xp <= 9000:
+        } else if (xp > 8000 && xp <= 9000) {
             ranking = "Ascendente";
-            break;
-        case xp > 9000 && xp <= 10000:
+        } else if (xp > 9000 && xp <= 10000) {
             ranking = "Imortal";
-            break;
-        case xp > 10000:
+        } else if (xp > 10000) {
             ranking = "Radiante";
-            break;
-        default:
-            ranking = "Ferro";
-            break;
-    }
-    return ranking;
-}
+        }
 
-console.log(`Ficha Técnica do Herói:
-    Nome: ${nome}.
-    Ranking de Herói: ${rankingHero(xpRankeadas)}.
-    Ranqueadas vencidas: ${rankeadasVencidas} vitórias.
-    Ranqueadas perdidas: ${rankeadasPerdidas} derrotas.
-    Ranqueadas totais jogadas: ${rankeadasTotais} jogadas.
-    Ranking de Partida:  ${matchRanking(xpRankeadas)}.`);
+        // Exibindo ficha do herói
+        console.log(`Ficha do Herói:
+            Nome: ${personagem.nome}.
+            Idade: ${personagem.idade}.
+            Classe: ${personagem.classe}
+            Ranking de Herói: ${ranking}.
+            Ranqueadas vencidas: ${personagem.rankeadasVencidas} vitórias.
+            Ranqueadas perdidas: ${personagem.rankeadasPerdidas} derrotas.
+            Ranqueadas totais jogadas: ${personagem.rankeadasTotais} jogadas.
+            Ranking de Partida:  ${matchRanking}.`);
+    }
+} while (jogarRankeada);

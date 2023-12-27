@@ -1,0 +1,72 @@
+{ "habilidades": {
+    "Guerreiro": [ {
+        "nomeAtaque": "Ataque Simples",
+        "chance": 0.4
+        }, {
+        "nomeAtaque": "Ataque Poderoso",
+        "chance": 0.6
+        }, {
+        "nomeAtaque": "Defesa Hábil",
+        "chance": 0.5
+        }, {
+        "nomeAtaque": "Ataque em área",
+        "chance": 0.7
+        }, {
+        "nomeAtaque": "Ataque duplo",
+        "chance": 0.65
+        }
+    ], "Mago": [ {
+        "nomeAtaque": "Fireball",
+        "chance": 0.4
+        }, {
+        "nomeAtaque": "Mísseis Mágicos",
+        "chance": 0.5
+        }, {
+        "nomeAtaque": "Mísseis Mágicos Téleguiados",
+        "chance": 0.65
+        }, {
+        "nomeAtaque": "Explosion!!",
+        "chance": 0.8
+        }
+    ], "Bruxo": [ {
+        "nomeAtaque": "Maldição Sombria",
+        "chance": 0.7
+        }, {
+        "nomeAtaque": "Invocação Infernal",
+        "chance": 0.6
+        }, {
+        "nomeAtaque": "Rajada de Veneno",
+        "chance": 0.65
+        }, {
+        "nomeAtaque": "Tempestade de Chamas Negras",
+        "chance": 0.8
+        }
+    ], "Tank": [ {
+        "nomeAtaque": "Bloqueio Defensivo",
+        "chance": 0.6
+        }, {
+        "nomeAtaque": "Investida Imponente",
+        "chance": 0.7
+        }, {
+        "nomeAtaque": "Blayblade",
+        "chance": 0.5
+        }, {
+        "nomeAtaque": "Rompe-defesa",
+        "chance": 0.7
+        }
+    ], "Assassino": [ {
+        "nomeAtaque": "Ataque Furtivo",
+        "chance": 0.9
+        }, {
+        "nomeAtaque": "Esquiva Mortal",
+        "chance": 0.6
+        }, {
+        "nomeAtaque": "Corte entre sombras",
+        "chance": 0.7
+        }, {
+        "nomeAtaque": "Invisibiilidade",
+        "chance": 0.85
+        }
+    ]
+    }
+}
