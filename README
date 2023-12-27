@@ -3,7 +3,8 @@
 Criar um sistema que permita a criação de ficha de um personagem que será héroi, contendo nome, idade, classe, ranking,
 ranqueadasVencidas, ranqueadasPerdidas, ranqueadasTotais. A partir desses dados conectar com um JSON que possui uma lista
 de habilidades com base em classe, sendo elas: Mago, Assassino, Guerreiro e Tank. Com base neles, o sistema permitirá ao
-héroi jogar uma rankeada, cuja habilidade usada é escolhida aleatoriamente e com base nela, o héroi terá uma chance de vencer. A partir desses dados, calcular o xpRankeada (ranqueadasVencidas - (ranqueadasPerdidas/2)) e os pontos de experiência (XP).
+héroi jogar uma rankeada, cuja habilidade usada é escolhida aleatoriamente e com base nela, o héroi terá uma chance de vencer. 
+A partir desses dados, calcular o xpRankeada (ranqueadasVencidas - (ranqueadasPerdidas/2)) e os pontos de experiência (XP).
 O programa empregará estruturas de decisão para analisar o desempenho nas partidas ranqueadas e o seu ranking de héroi,
 assim como apresentar mensagens resultantes da sua analise. Além disso, o sistema informa qual a classe e ataque usado
 pelo héroi para vencer, e agora o sistema está dentro de um do-while, diferente das versões 0.1 e 1.0.
